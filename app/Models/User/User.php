@@ -2,9 +2,12 @@
 
 namespace App\Models\User;
 
+use App\Models\Amway\Amway;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model
+class User extends Authenticatable implements JWTSubject
 {
     //表名
     const TABLE = 'df_user';
@@ -43,4 +46,19 @@ class User extends Model
     protected $dates = [
         'deleted_at'
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    public function amway()
+    {
+        return $this->hasMany(Amway::class, 'user_id', 'id');
+    }
 }

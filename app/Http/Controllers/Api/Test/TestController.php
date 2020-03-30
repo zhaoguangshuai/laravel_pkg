@@ -10,14 +10,19 @@ namespace App\Http\Controllers\Api\Test;
 
 
 use App\Http\Controllers\BaseController;
-use App\Models\User\User;
-use Illuminate\Support\Facades\Request;
+use App\Repositories\Test\TestRepository;
+use Illuminate\Http\Request;
 
 class TestController extends BaseController
 {
+    public function __construct(TestRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index(Request $request)
     {
-        dd(User::query()->find(5));
+        return $this->repository->index($request);
     }
 
 }
