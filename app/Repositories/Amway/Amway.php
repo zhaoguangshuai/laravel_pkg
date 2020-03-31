@@ -8,6 +8,7 @@ class Amway extends BaseRepository
 {
     public function index(Request $request)
     {
-        dd($request->user()->id);
+        $info = $request->user()->amway()->get();
+        return $this->success($info);
     }
 }
