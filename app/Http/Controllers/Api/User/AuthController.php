@@ -18,4 +18,14 @@ class AuthController extends BaseController
         return $this->repository->passLogin($request);
     }
 
+    public function logout()
+    {
+        return $this->repository->logout();
+    }
+
+    public function userInfo(Request $request)
+    {
+        return $this->repository->userInfo($request);
+    }
+
 }

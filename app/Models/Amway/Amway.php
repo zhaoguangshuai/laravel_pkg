@@ -22,6 +22,8 @@ class Amway extends BaseModel
     ];
 
     protected $fillable = [
+        'game_id',
+        'user_id',
         'content',
         'weight',
         'type',

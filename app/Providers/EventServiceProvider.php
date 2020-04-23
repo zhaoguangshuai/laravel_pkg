@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\Api\V1\Amway\AmwayCreate;
+use App\Listeners\APi\V1\Amway\AddListenerLog;
+use App\Listeners\Api\V1\Amway\DeleteAmway;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -18,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        AmwayCreate::class => [
+            DeleteAmway::class,
+            AddListenerLog::class,
+        ]
     ];
 
     /**
