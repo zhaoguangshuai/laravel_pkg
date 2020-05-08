@@ -179,6 +179,7 @@ return [
          * 将编写的服务绑定到服务容器
          */
         \App\Providers\ModelListerServiceProvider::class,
+        \App\Providers\TestProvider::class,
 
     ],
 
@@ -228,6 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Test' => \App\Facade\Test::class,
 
     ],
 
