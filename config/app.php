@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Test' => \App\Facade\Test::class,
+        'FacadeServices' => \App\Facade\FacadeServices::class,
 
     ],
 

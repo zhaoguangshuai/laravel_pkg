@@ -9,6 +9,8 @@
 namespace App\Http\Controllers\Api\Test;
 
 
+use App\Contracts\MyTest\IsTest;
+use App\Contracts\MyTest\IsTestContracts;
 use App\Http\Controllers\BaseController;
 use App\Repositories\Test\TestRepository;
 use Illuminate\Http\Request;
@@ -23,6 +25,11 @@ class TestController extends BaseController
     public function index(Request $request)
     {
         return $this->repository->index($request);
+    }
+
+    public function testContracts(Request $request, IsTest $isTest, IsTestContracts $isTestContracts)
+    {
+        return $this->repository->testContracts($request, $isTest, $isTestContracts);
     }
 
 }

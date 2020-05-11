@@ -5,6 +5,8 @@ Route::namespace('Api')->prefix('test')->group(function () {
             Route::namespace('Test')->group(function () {
                 //测试接口
                 Route::get('test/index', 'TestController@index')->name('test.index');
+                //测试自己开发一个契约
+                Route::get('test/contracts', 'TestController@testContracts')->name('test.contracts');
             });
 
             Route::namespace('User')->group(function () {
