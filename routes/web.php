@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('decompose','\Lubusin\Decomposer\Controllers\DecomposerController@index');

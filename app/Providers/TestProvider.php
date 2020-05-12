@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\Test\ContractsServices;
 use App\Services\Test\FacadeServices;
+use App\Services\Test\TwoContractsServices;
 use Illuminate\Support\ServiceProvider;
 
 class TestProvider extends ServiceProvider
@@ -21,6 +22,8 @@ class TestProvider extends ServiceProvider
         $this->app->singleton('TestService', FacadeServices::class);
         //绑定接口到实现
         $this->app->singleton(\App\Contracts\MyTest\IsTest::class, \App\Units\Test\Contracts::class);
+        //绑定接口到实现2
+        $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, TwoContractsServices::class);
         //绑定接口到实现
         $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, ContractsServices::class);
     }
