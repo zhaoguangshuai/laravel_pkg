@@ -28,6 +28,13 @@ Route::namespace('Api')->prefix('test')->group(function () {
                     //退出登录
                     Route::post('login/logout', 'AuthController@logout')->name('user.logout');
                 });
+
+                //测试spatie/laravel-medialibrary这个扩展包
+                Route::post('media', function (\Illuminate\Http\Request $request) {
+                    $user = $request->user();
+                    $user->addMediaFromRequest('photo')->toMediaCollection('photo');
+                    return response()->json([], 201);
+                });
             });
 
 

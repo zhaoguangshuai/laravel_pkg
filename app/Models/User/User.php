@@ -5,10 +5,15 @@ namespace App\Models\User;
 use App\Models\Amway\Amway;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject,HasMedia
 {
+    use HasMediaTrait;
     //表名
     const TABLE = 'df_user';
 
@@ -55,6 +60,17 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->crop(Manipulations::CROP_CENTER, 200, 200)
+            ->sharpen(10);
+
+        $this->addMediaConversion('medium')
+            ->crop(Manipulations::CROP_CENTER, 400, 400)
+            ->sharpen(10);
     }
 
     public function amway()
