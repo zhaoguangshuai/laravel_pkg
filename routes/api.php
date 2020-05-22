@@ -14,6 +14,12 @@ Route::namespace('Api')->prefix('test')->group(function () {
                Route::post('login/pass', 'AuthController@passLogin')->name('user.login.pass');
             });
 
+            //测试自动加载
+            Route::get('auto/load/register', function () {
+                return response()->json(['hehe' => lock_up(\Illuminate\Support\Facades\Redis::connection(),
+                    $_SERVER['REQUEST_TIME'], 'lock', 500)]);
+            });
+
             route::middleware('api.refresh')->group(function () {
                 //获取用户安利墙列表
                 Route::namespace('Amway')->group(function () {
@@ -35,6 +41,14 @@ Route::namespace('Api')->prefix('test')->group(function () {
                     $user->addMediaFromRequest('photo')->toMediaCollection('photo');
                     return response()->json([], 201);
                 });
+
+                //测试rinvex/countries这个扩展包
+                Route::get('countries', function() {
+                    $countries = \Rinvex\Country\CountryLoader::where('geo.region', 'Asia');
+
+                    return response()->json($countries);
+                });
+
             });
 
 
