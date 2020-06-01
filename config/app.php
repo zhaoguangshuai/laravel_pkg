@@ -178,6 +178,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Aoxiang\Pca\ProvinceCityAreaServiceProvider::class,
         /**
          * 将编写的服务绑定到服务容器
          */

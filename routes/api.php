@@ -1,6 +1,6 @@
 <?php
 
-Route::namespace('Api')->prefix('test')->group(function () {
+Route::namespace('Api')->prefix('test22')->group(function () {
 
             Route::namespace('Test')->group(function () {
                 //测试接口
@@ -18,6 +18,12 @@ Route::namespace('Api')->prefix('test')->group(function () {
             Route::get('auto/load/register', function () {
                 return response()->json(['hehe' => lock_up(\Illuminate\Support\Facades\Redis::connection(),
                     $_SERVER['REQUEST_TIME'], 'lock', 500)]);
+            });
+
+            Route::namespace('China')->group(function () {
+               Route::get('china/divisions', 'ChinaController@ssqInfo')->name('china.division.ssq');
+                Route::get('new/china/divisions', 'ChinaController@newChinaInfo')->name('new.china.division.ssq');
+
             });
 
             route::middleware('api.refresh')->group(function () {
