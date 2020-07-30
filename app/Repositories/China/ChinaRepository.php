@@ -18,8 +18,8 @@ class ChinaRepository extends BaseRepository
     {
         //return $this->success(ProvinceCityArea::getProvinceList());
         //return $this->success(ProvinceCityArea::getCityList(1));
-        dd(ProvinceCityArea::getName(21, 1827, 40847, ''));
-        return $this->success();
+        //dd(ProvinceCityArea::getName(21, 1827, 40847, ''));
+        return $this->success(ProvinceCityArea::getName(21, 1827, 40847, ''));
     }
 
     public function newChinaInfo()

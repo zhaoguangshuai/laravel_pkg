@@ -5,12 +5,15 @@ use App\Contracts\MyTest\IsTest;
 use App\Contracts\MyTest\IsTestContracts;
 use App\Facade\FacadeServices;
 use App\Facade\Test;
+use App\Models\Amway\AdminStoreAppoints;
+use App\Models\Amway\Pictures;
 use App\Models\User\User;
 use App\Repositories\BaseRepository;
 use App\Services\Celue\Page\Page;
 use App\Services\Celue\TypeCelue\FemaleUser;
 use App\Services\Celue\TypeCelue\MaleUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class TestRepository extends BaseRepository
@@ -23,7 +26,28 @@ class TestRepository extends BaseRepository
 
     public function index(Request $request)
     {
-        dd(Test::index());
+//        $data = Pictures::query()->select(DB::raw('max(id) as id'))
+//            ->groupBy('pic_group')->get();
+//        return $this->success($data);
+//        $data = Pictures::query()->whereIn('id', function($query){
+//            $query->select(DB::raw('max(id) as id'))
+//                ->from('pictures')
+//                ->groupBy('pic_group');
+//        })->get();
+//        $data->each(function (Pictures $pictures) {
+//           $pictures->num = Pictures::query()->where('pic_group', $pictures->pic_group)->count();
+//        });
+
+        $data = AdminStoreAppoints::query()->whereIn('appoint_at', function ($query) {
+            $query->select('appoint_at')
+                ->from('admin_store_appoints')
+                ->where('admin_store_id', 6)
+                ->groupBy('appoint_at');
+        });
+
+        return $this->success($data);
+
+        //dd(Test::index());
         return $this->success(app('TestT')->index());
         return $this->success(User::query()->find(5));
     }
