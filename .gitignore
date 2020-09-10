@@ -24,3 +24,4 @@ public/vendor/redis-manager/
 /composer.lock
 /storage/laravels.json
 /storage/laravels.pid
+/tests

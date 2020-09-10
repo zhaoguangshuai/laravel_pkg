@@ -53,6 +53,12 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": [
+                "echo committing as $(git config user.name)",
+                "./vendor/phpunit/phpunit/phpunit"
+            ]
         }
     },
     "autoload": {
@@ -75,6 +81,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "cghooks": "vendor/bin/cghooks",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

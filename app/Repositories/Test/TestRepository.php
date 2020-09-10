@@ -38,14 +38,38 @@ class TestRepository extends BaseRepository
 //           $pictures->num = Pictures::query()->where('pic_group', $pictures->pic_group)->count();
 //        });
 
-        $data = AdminStoreAppoints::query()->whereIn('appoint_at', function ($query) {
-            $query->select('appoint_at')
-                ->from('admin_store_appoints')
-                ->where('admin_store_id', 6)
-                ->groupBy('appoint_at');
-        });
+        //where型子查询
+//        $data = AdminStoreAppoints::query()->whereIn('appoint_at', function ($query) {
+//            $query->select('appoint_at')
+//                ->from('admin_store_appoints')
+//                ->where('admin_store_id', 6)
+//                ->groupBy('appoint_at');
+//        });
+//
+//        return $this->success($data);
 
-        return $this->success($data);
+        //from型子查询
+        $subQuery = DB::table('auction_histories')
+            ->select('auction_goods.play_id', 'auction_goods.id', DB::raw('max(auction_histories.user_price) as max_user_price'))
+            ->join('auction_goods', 'auction_histories.auction_good_id', '=', 'auction_goods.id')
+            ->groupBy('auction_goods.play_id', 'auction_goods.id');
+            //->get();
+
+        $subQueryOne = DB::table(DB::raw("({$subQuery->toSql()}) as sub_one"))
+            ->select('play_id', DB::raw('sum( max_user_price ) AS sum_user_price '))
+            ->groupBy('play_id');
+
+        $query = DB::table(DB::raw("({$subQueryOne->toSql()}) as sub"))
+            ->select('auction_plays.id', 'auction_plays.title', 'sub.sum_user_price')
+            ->join('auction_plays', 'sub.play_id', '=', 'auction_plays.id');
+
+        $query->mergeBindings($subQueryOne);
+
+        $info = $query->get();
+
+        return $this->success($info);
+
+
 
         //dd(Test::index());
         return $this->success(app('TestT')->index());
