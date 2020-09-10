@@ -25,7 +25,7 @@ class TestController extends BaseController
 
     public function index(Request $request)
     {
-        //网页转pdf
+        //网页转pdf//
 //        $pdf = App::make('snappy.pdf.wrapper');
 //        return $pdf
 //            //->loadHtml('<h1>你好123</h1>')
