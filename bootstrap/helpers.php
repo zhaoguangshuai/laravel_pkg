@@ -30,3 +30,17 @@ function del_Lock($redis, $lock_key)
 {
     $redis->del($lock_key);
 }
+
+if (! function_exists('sqllogger')) {
+    /**
+     * Write some information to the log.
+     *
+     * @param  string  $message
+     * @param  array   $context
+     * @return void
+     */
+    function sqllogger($message, $context = [])
+    {
+        app('log')->channel('sqllog')->info($message, $context);
+    }
+}

@@ -184,6 +184,7 @@ return [
          */
         \App\Providers\ModelListerServiceProvider::class,
         \App\Providers\TestProvider::class,
+        \App\Providers\SqlLogServiceProvider::class,
 
     ],
 
