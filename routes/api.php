@@ -26,6 +26,10 @@ Route::namespace('Api')->prefix('test22')->group(function () {
 
             });
 
+            Route::namespace('Orm')->group(function () {
+               Route::get('orm/test/one', 'OrmController@testOne')->name('orm.test.one');
+            });
+
             route::middleware('api.refresh')->group(function () {
                 //获取用户安利墙列表
                 Route::namespace('Amway')->group(function () {

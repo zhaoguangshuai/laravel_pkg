@@ -16,4 +16,9 @@ class AuctionPlays extends BaseModel
     const TABLE = 'auction_plays';
 
     protected $table = self::TABLE;
+
+    public function auctionGoods()
+    {
+        return $this->hasMany(AuctionGoods::class, 'play_id', 'id');
+    }
 }

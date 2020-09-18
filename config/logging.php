@@ -37,6 +37,7 @@ return [
         'stack' => [
             'driver' => 'stack',
             'channels' => ['daily'],
+            'ignore_exceptions' => false,
         ],
 
         'single' => [
@@ -61,7 +62,7 @@ return [
         ],
 
         'papertrail' => [
-            'driver'  => 'monolog',
+            'driver' => 'monolog',
             'level' => 'debug',
             'handler' => SyslogUdpHandler::class,
             'handler_with' => [
@@ -88,6 +89,19 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+        'sqllog' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/sql/laravel.log'),
+            'level' => 'debug',
+            'days' => 14,
+        ],
+
+        'infologger' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/info/laravel.log'),
+            'level' => 'info',
+        ],
+
     ],
 
 ];

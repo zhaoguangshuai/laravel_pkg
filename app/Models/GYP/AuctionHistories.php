@@ -17,5 +17,10 @@ class AuctionHistories extends BaseModel
 
     protected $table = self::TABLE;
 
+    public function goods()
+    {
+        return $this->belongsTo(AuctionGoods::class, 'auction_good_id', 'id');
+    }
+
 
 }
