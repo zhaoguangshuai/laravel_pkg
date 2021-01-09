@@ -49,7 +49,7 @@ class TestRepository extends BaseRepository
 //        return $this->success($data);
 
         //from型子查询
-        $subQuery = DB::table('auction_histories')
+        /*$subQuery = DB::table('auction_histories')
             ->select('auction_goods.play_id', 'auction_goods.id', DB::raw('max(auction_histories.user_price) as max_user_price'))
             ->join('auction_goods', 'auction_histories.auction_good_id', '=', 'auction_goods.id')
             ->groupBy('auction_goods.play_id', 'auction_goods.id');
@@ -67,21 +67,27 @@ class TestRepository extends BaseRepository
 
         $info = $query->get();
 
-        return $this->success($info);
+        return $this->success($info);*/
 
 
 
         //dd(Test::index());
         return $this->success(app('TestT')->index());
-        return $this->success(User::query()->find(5));
+        //return $this->success(User::query()->find(5));
     }
 
     public function testContracts(Request $request, IsTest $isTest, IsTestContracts $isTestContracts)
     {
-//        $res = FacadeServices::index11();
-//        return $this->success($res);
-//        return $this->success($isTest->index());
-        //return $this->success($isTestContracts->test());
+        //测试服务提供者绑定服务
+        //$res = FacadeServices::index11();
+        //$res = app('TestService')->index11();
+        //return $this->success($res);
+
+        //测试调用契约
+        //return $this->success($isTest->index());
+        return $this->success($isTestContracts->test());
+
+
         //运用到了设计模式的策略模式
         $page_type = $request->input('page_type');
         if ($page_type == 1) {

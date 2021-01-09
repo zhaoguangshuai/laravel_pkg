@@ -234,8 +234,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Test' => \App\Facade\Test::class,
-        'FacadeServices' => \App\Facade\FacadeServices::class,
+        'Test456' => \App\Facade\Test::class,
+        'FacadeServices123' => \App\Facade\FacadeServices::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 

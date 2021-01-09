@@ -20,12 +20,15 @@ class TestProvider extends ServiceProvider
         $this->app->singleton('TestT', \App\Units\Test\Test::class);
         //将该服务注入到容器
         $this->app->singleton('TestService', FacadeServices::class);
+
         //绑定接口到实现
         $this->app->singleton(\App\Contracts\MyTest\IsTest::class, \App\Units\Test\Contracts::class);
-        //绑定接口到实现2
-        $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, TwoContractsServices::class);
         //绑定接口到实现
         $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, ContractsServices::class);
+
+        //绑定接口到实现2
+        $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, TwoContractsServices::class);
+
     }
 
     /**

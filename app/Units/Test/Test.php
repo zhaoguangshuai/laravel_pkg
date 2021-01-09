@@ -13,6 +13,6 @@ class Test
 {
     public function index()
     {
-        return 'hello word';
+        return 'hello word123456';
     }
 }
