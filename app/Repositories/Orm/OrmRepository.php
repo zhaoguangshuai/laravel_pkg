@@ -97,23 +97,23 @@ class OrmRepository extends BaseRepository
 //        return $this->success($data);
 
 
-//        AuctionPlays::query()->chunk(200, function ($query) {
-//           foreach ($query as $value) {
-//               var_dump($value->id);
-//           }
-//        });
+        AuctionPlays::query()->chunk(200, function ($query) {
+           foreach ($query as $value) {
+               var_dump($value->id);
+           }
+        });
 
-        $res = AuctionPlays::query()
-            ->addSelect(['last_goods_id' =>
-            AuctionGoods::query()
-                ->select('id')
-                ->whereColumn('play_id', 'auction_plays.id')
-                ->orderBy('id', 'desc')->first()->toArray()
-            ])
-            ->limit(10)
-            ->get();
-
-        return $this->success($res);
+//        $res = AuctionPlays::query()
+//            ->addSelect(['last_goods_id' =>
+//            AuctionGoods::query()
+//                ->select('id')
+//                ->whereColumn('play_id', 'auction_plays.id')
+//                ->orderBy('id', 'desc')->first()->toArray()
+//            ])
+//            ->limit(10)
+//            ->get();
+//
+//        return $this->success($res);
     }
 
 
