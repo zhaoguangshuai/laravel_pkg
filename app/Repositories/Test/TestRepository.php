@@ -49,7 +49,7 @@ class TestRepository extends BaseRepository
 //        return $this->success($data);
 
         //from型子查询
-        /*$subQuery = DB::table('auction_histories')
+        $subQuery = DB::table('auction_histories')
             ->select('auction_goods.play_id', 'auction_goods.id', DB::raw('max(auction_histories.user_price) as max_user_price'))
             ->join('auction_goods', 'auction_histories.auction_good_id', '=', 'auction_goods.id')
             ->groupBy('auction_goods.play_id', 'auction_goods.id');
@@ -67,7 +67,7 @@ class TestRepository extends BaseRepository
 
         $info = $query->get();
 
-        return $this->success($info);*/
+        return $this->success($info);
 
 
 
