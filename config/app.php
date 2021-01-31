@@ -180,7 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Aoxiang\Pca\ProvinceCityAreaServiceProvider::class,
         /**
-         * 将编写的服务绑定到服务容器
+         * 注册服务提供者
          */
         \App\Providers\ModelListerServiceProvider::class,
         \App\Providers\TestProvider::class,

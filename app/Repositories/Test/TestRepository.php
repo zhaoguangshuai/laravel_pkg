@@ -26,6 +26,16 @@ class TestRepository extends BaseRepository
 
     public function index(Request $request)
     {
+        $arr = [-10,10,6,8,-13,-14,56,-78];
+        sort($arr);
+        $len = count($arr);
+        $sum1 = $arr[0] * $arr[1] * $arr[$len -1];//最小的两个数，和最大的一个数相乘
+        $sum2 = $arr[$len-3] * $arr[$len-2] * $arr[$len -1];//最大的三个数相乘
+        if ($sum1 > $sum2) {
+            return $sum1;
+        } else {
+            return $sum2;
+        }
 //        $data = Pictures::query()->select(DB::raw('max(id) as id'))
 //            ->groupBy('pic_group')->get();
 //        return $this->success($data);

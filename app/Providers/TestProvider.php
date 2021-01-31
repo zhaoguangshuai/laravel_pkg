@@ -23,9 +23,10 @@ class TestProvider extends ServiceProvider
 
         //绑定接口到实现
         $this->app->singleton(\App\Contracts\MyTest\IsTest::class, \App\Units\Test\Contracts::class);
+
+
         //绑定接口到实现
         $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, ContractsServices::class);
-
         //绑定接口到实现2
         $this->app->singleton(\App\Contracts\MyTest\IsTestContracts::class, TwoContractsServices::class);
 
